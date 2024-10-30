@@ -25,10 +25,9 @@ namespace TFL.Automation.UI.Hooks
             string testResultsDirectory = Path.Combine(projectDirectory, "TestResults");
             Directory.CreateDirectory(testResultsDirectory);
 
-
             var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
             var reportPath = Path.Combine(testResultsDirectory, $"TestAutomationReport_{timestamp}.html");
-            //var reportPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestResults", $"TestAutomationReport_{timestamp}.html");
+
             _htmlReporter = new ExtentHtmlReporter(reportPath);
 
             // Configure the HTML reporter

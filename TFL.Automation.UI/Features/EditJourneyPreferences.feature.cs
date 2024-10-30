@@ -95,12 +95,14 @@ namespace TFL.Automation.UI.Features
         [Xunit.SkippableFactAttribute(DisplayName="Edit preferences to select route with least walking")]
         [Xunit.TraitAttribute("FeatureTitle", "EditJourneyPreferences")]
         [Xunit.TraitAttribute("Description", "Edit preferences to select route with least walking")]
+        [Xunit.TraitAttribute("Category", "Automation")]
         public void EditPreferencesToSelectRouteWithLeastWalking()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "Automation"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit preferences to select route with least walking", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 10
+#line 11
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -113,22 +115,22 @@ namespace TFL.Automation.UI.Features
 #line 7
   this.FeatureBackground();
 #line hidden
-#line 11
+#line 12
     testRunner.When("I select \"Edit preferences\" option", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 12
+#line 13
     testRunner.And("I choose \"Least walking\" as my preference", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 13
+#line 14
     testRunner.And("I update the journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 14
+#line 15
     testRunner.Then("the system should recalculate the route", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 15
+#line 16
     testRunner.And("the new route should prioritize minimal walking distance", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 16
+#line 17
     testRunner.And("the journey details should be updated accordingly", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
@@ -138,12 +140,14 @@ namespace TFL.Automation.UI.Features
         [Xunit.SkippableFactAttribute(DisplayName="Verify updated journey reflects least walking preference")]
         [Xunit.TraitAttribute("FeatureTitle", "EditJourneyPreferences")]
         [Xunit.TraitAttribute("Description", "Verify updated journey reflects least walking preference")]
+        [Xunit.TraitAttribute("Category", "ManualScenarios")]
         public void VerifyUpdatedJourneyReflectsLeastWalkingPreference()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "ManualScenarios"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify updated journey reflects least walking preference", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 18
+#line 20
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -156,19 +160,19 @@ namespace TFL.Automation.UI.Features
 #line 7
   this.FeatureBackground();
 #line hidden
-#line 19
+#line 21
     testRunner.Given("I have edited preferences to \"Least walking\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 20
+#line 22
     testRunner.When("I view the updated journey details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 21
+#line 23
     testRunner.Then("I should see a route with minimal walking segments", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 22
+#line 24
     testRunner.And("the total walking distance should be less than or equal to the original route", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 23
+#line 25
     testRunner.And("the journey summary should indicate \"Least walking\" preference", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
@@ -178,16 +182,23 @@ namespace TFL.Automation.UI.Features
         [Xunit.SkippableTheoryAttribute(DisplayName="Compare walking distances before and after preference change")]
         [Xunit.TraitAttribute("FeatureTitle", "EditJourneyPreferences")]
         [Xunit.TraitAttribute("Description", "Compare walking distances before and after preference change")]
+        [Xunit.TraitAttribute("Category", "ManualScenarios")]
         [Xunit.InlineDataAttribute("10", new string[0])]
         [Xunit.InlineDataAttribute("20", new string[0])]
         [Xunit.InlineDataAttribute("30", new string[0])]
         public void CompareWalkingDistancesBeforeAndAfterPreferenceChange(string minimum_Reduction, string[] exampleTags)
         {
-            string[] tagsOfScenario = exampleTags;
+            string[] @__tags = new string[] {
+                    "ManualScenarios"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("minimum_reduction", minimum_Reduction);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Compare walking distances before and after preference change", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 25
+#line 28
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -200,19 +211,19 @@ namespace TFL.Automation.UI.Features
 #line 7
   this.FeatureBackground();
 #line hidden
-#line 26
+#line 29
     testRunner.Given("I have noted the original walking distance", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 27
+#line 30
     testRunner.When("I change the preference to \"Least walking\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 28
+#line 31
     testRunner.And("I update the journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 29
+#line 32
     testRunner.Then("the new walking distance should be less than or equal to the original", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 30
+#line 33
     testRunner.And(string.Format("the difference in walking distance should be at least {0} percent", minimum_Reduction), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }

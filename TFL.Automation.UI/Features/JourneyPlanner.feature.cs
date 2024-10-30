@@ -93,11 +93,11 @@ testRunner.Given("the journey planner website is up and running", ((string)(null
         [Xunit.SkippableFactAttribute(DisplayName="Verify walking journey from Leicester Square to Covent Garden")]
         [Xunit.TraitAttribute("FeatureTitle", "JourneyPlanner Verification from Leicester Square to Covent Garden")]
         [Xunit.TraitAttribute("Description", "Verify walking journey from Leicester Square to Covent Garden")]
-        [Xunit.TraitAttribute("Category", "JourneyPlanner")]
+        [Xunit.TraitAttribute("Category", "Automation")]
         public void VerifyWalkingJourneyFromLeicesterSquareToCoventGarden()
         {
             string[] tagsOfScenario = new string[] {
-                    "JourneyPlanner"};
+                    "Automation"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify walking journey from Leicester Square to Covent Garden", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 9
@@ -133,11 +133,11 @@ this.FeatureBackground();
         [Xunit.SkippableFactAttribute(DisplayName="Verify cycling journey from Leicester Square to Covent Garden")]
         [Xunit.TraitAttribute("FeatureTitle", "JourneyPlanner Verification from Leicester Square to Covent Garden")]
         [Xunit.TraitAttribute("Description", "Verify cycling journey from Leicester Square to Covent Garden")]
-        [Xunit.TraitAttribute("Category", "JourneyPlanner")]
+        [Xunit.TraitAttribute("Category", "Automation")]
         public void VerifyCyclingJourneyFromLeicesterSquareToCoventGarden()
         {
             string[] tagsOfScenario = new string[] {
-                    "JourneyPlanner"};
+                    "Automation"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify cycling journey from Leicester Square to Covent Garden", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 16
@@ -170,24 +170,16 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableTheoryAttribute(DisplayName="Verify journey details for different transportation modes")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare walking and cycling times")]
         [Xunit.TraitAttribute("FeatureTitle", "JourneyPlanner Verification from Leicester Square to Covent Garden")]
-        [Xunit.TraitAttribute("Description", "Verify journey details for different transportation modes")]
-        [Xunit.TraitAttribute("Category", "JourneyPlanner")]
-        [Xunit.InlineDataAttribute("walking", new string[0])]
-        [Xunit.InlineDataAttribute("cycling", new string[0])]
-        public void VerifyJourneyDetailsForDifferentTransportationModes(string mode, string[] exampleTags)
+        [Xunit.TraitAttribute("Description", "Compare walking and cycling times")]
+        [Xunit.TraitAttribute("Category", "Automation")]
+        public void CompareWalkingAndCyclingTimes()
         {
-            string[] @__tags = new string[] {
-                    "JourneyPlanner"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            string[] tagsOfScenario = @__tags;
+            string[] tagsOfScenario = new string[] {
+                    "Automation"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("mode", mode);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify journey details for different transportation modes", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Compare walking and cycling times", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 23
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -202,33 +194,38 @@ this.FeatureBackground();
 this.FeatureBackground();
 #line hidden
 #line 24
-    testRunner.When(string.Format("I request a {0} route from \"Leicester Square Underground Station\" to \"Covent Gard" +
-                            "en Underground Station\"", mode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("I request both walking and cycling routes from \"Leicester Square Underground Stat" +
+                        "ion\" to \"Covent Garden Underground Station\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 25
-    testRunner.Then("I should receive a valid route", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("the cycling time should be less than the walking time", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 26
-    testRunner.And(string.Format("the estimated time should be within acceptable range for {0}", mode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 27
-    testRunner.And(string.Format("the route should use appropriate {0} paths or roads", mode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("both routes should have the same approximate distance", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare walking and cycling times")]
+        [Xunit.SkippableTheoryAttribute(DisplayName="Verify journey details for different transportation modes")]
         [Xunit.TraitAttribute("FeatureTitle", "JourneyPlanner Verification from Leicester Square to Covent Garden")]
-        [Xunit.TraitAttribute("Description", "Compare walking and cycling times")]
-        [Xunit.TraitAttribute("Category", "JourneyPlanner")]
-        public void CompareWalkingAndCyclingTimes()
+        [Xunit.TraitAttribute("Description", "Verify journey details for different transportation modes")]
+        [Xunit.TraitAttribute("Category", "ManualScenarios")]
+        [Xunit.InlineDataAttribute("walking", new string[0])]
+        [Xunit.InlineDataAttribute("cycling", new string[0])]
+        public void VerifyJourneyDetailsForDifferentTransportationModes(string mode, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
-                    "JourneyPlanner"};
+            string[] @__tags = new string[] {
+                    "ManualScenarios"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Compare walking and cycling times", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 35
+            argumentsOfScenario.Add("mode", mode);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify journey details for different transportation modes", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 30
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -241,15 +238,18 @@ this.FeatureBackground();
 #line 5
 this.FeatureBackground();
 #line hidden
-#line 36
-    testRunner.When("I request both walking and cycling routes from \"Leicester Square Underground Stat" +
-                        "ion\" to \"Covent Garden Underground Station\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 31
+    testRunner.When(string.Format("I request a {0} route from \"Leicester Square Underground Station\" to \"Covent Gard" +
+                            "en Underground Station\"", mode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 37
-    testRunner.Then("the cycling time should be less than the walking time", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 32
+    testRunner.Then("I should receive a valid route", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 38
-    testRunner.And("both routes should have the same approximate distance", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 33
+    testRunner.And(string.Format("the estimated time should be within acceptable range for {0}", mode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 34
+    testRunner.And(string.Format("the route should use appropriate {0} paths or roads", mode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();

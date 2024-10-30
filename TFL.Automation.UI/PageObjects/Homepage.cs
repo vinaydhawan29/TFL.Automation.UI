@@ -78,6 +78,31 @@ namespace TFL.Automation.UI.PageObjects
             _webDriver.FindElementAndClick(Home.PlanJourneyButton, "Click on Plan Journey button");
         }
 
+        public void EnterFromOrToLocation(string location, string fieldName)
+        {
+            if (fieldName.Equals("From", StringComparison.OrdinalIgnoreCase))
+            {
+                _webDriver.FindElementAndEnterText(Home.FromTextBox, location, "Enter From travel location textbox");
+            }
+            else if (fieldName.Equals("To", StringComparison.OrdinalIgnoreCase))
+            {
+                _webDriver.FindElementAndEnterText(Home.ToTextBox, location, "Enter To travel location textbox");
+
+                if (location.Equals("London Bridge", StringComparison.OrdinalIgnoreCase))
+                {
+
+                    SelectFromLocationFromAutoComplete(location);
+                }
+            }
+            else
+            {
+                throw new ArgumentException($"Invalid field name: {fieldName}. Expected 'From' or 'To'.");
+            }
+
+            extentTest.Log(Status.Info, $"Enter  {location} in {fieldName} field");
+        }
+
+        public void ClickPlanJourneyButton() => _webDriver.FindElementAndClick(Home.PlanJourneyButton, "Click on Plan Journey button");
         private void SelectFromLocationFromAutoComplete(string expectedLocation)
         {
             try

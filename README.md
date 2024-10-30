@@ -40,7 +40,7 @@ The project is organized as follows:
 
 - `Helpers/`: Contains utility and helper classes
   - `WebDriverExtensions.cs`
-  - `ConfigReader.cs`
+  - `ConfigRead.cs`
 
 - `Factory/`: Contains browser factory for initiating the different browsers
   - `BrowserFactory.cs`
@@ -55,6 +55,10 @@ The project is organized as follows:
 
 ## Decisions
 Use SpecFlow for Behavior-Driven Development. - Allows for writing tests in Gherkin syntax, making them readable by non-technical stakeholders and promoting collaboration between developers, testers, and business analysts. These development decisions were made to create a robust, maintainable, and efficient test automation framework. They address common challenges in test automation such as reliability, maintainability, speed, and ease of use. The framework is designed to be flexible enough to accommodate future changes and expansions to the testing scope.
+
+### Tags used
+Automation: Scenarios that are automated
+Manual Scenarios: Scenarios that are not automated. Manaual BDD test for the feature have been created for review
 
 ### Selenium WebDriver for Browser Automation
 Use Selenium WebDriver for interacting with web elements.

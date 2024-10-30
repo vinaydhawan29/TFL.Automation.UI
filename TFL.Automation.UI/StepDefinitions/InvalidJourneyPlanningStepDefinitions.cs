@@ -1,43 +1,98 @@
+using AventStack.ExtentReports;
+using OpenQA.Selenium;
+using TFL.Automation.UI.Helpers;
+using TFL.Automation.UI.PageObjects;
+using static TFL.Automation.UI.Factory.BrowserFactory;
+
 namespace TFL.Automation.UI.StepDefinitions
 {
+
+    [Collection("InvalidJourneyPlanningCollection")]
     [Binding]
-    public class InvalidJourneyPlanningStepDefinitions
+    public class InvalidJourneyPlanningStepDefinitions : IDisposable
     {
+        private IWebDriver webDriver;
+        private Homepage homepage;
+        private SearchResultsPage searchResultsPage;
+        private readonly ExtentTest extentTest;
+
+        public InvalidJourneyPlanningStepDefinitions(ScenarioContext scenario)
+        {
+            extentTest = scenario.Get<ExtentTest>("ExtentTest");
+
+            webDriver = GetBrowser(BrowserType.Chrome, ConfigRead.Get("TflUrl"));
+
+            homepage = new Homepage(webDriver, scenario);
+
+            searchResultsPage = new SearchResultsPage(webDriver, scenario);
+
+        }
+
+
         [Given(@"the journey planning widget is open")]
         public void GivenTheJourneyPlanningWidgetIsOpen()
         {
-            throw new PendingStepException();
+
+            #region Navigate to TFL Homepage and search results page
+
+            homepage.AcceptCookies();
+
+            homepage.ValidateTflHomepageisLoaded();
+
+            extentTest.Log(Status.Info, "Journey Planner website is up and running");
+
+            #endregion
+
         }
 
         [When(@"I enter ""([^""]*)"" in the ""([^""]*)"" field")]
-        public void WhenIEnterInTheField(string p0, string from)
+        public void WhenIEnterInTheField(string location, string fieldName)
         {
-            throw new PendingStepException();
+            homepage.EnterFromOrToLocation(location, fieldName);
+
         }
 
         [When(@"I submit the journey plan")]
         public void WhenISubmitTheJourneyPlan()
         {
-            throw new PendingStepException();
+            homepage.ClickPlanJourneyButton();
         }
 
         [Then(@"I should see an error message indicating both locations are invalid")]
         public void ThenIShouldSeeAnErrorMessageIndicatingBothLocationsAreInvalid()
         {
-            throw new PendingStepException();
+            string expectedErrorMessage = "Journey planner could not find any results to your search. Please try again";
+
+            string actualErrorMessage = searchResultsPage.GetOnScreenJourneyPlannerMessage();
+
+            Assert.True(actualErrorMessage.Contains(expectedErrorMessage), "Search results with valid error message : - Journey planner could not find any results to your search. Please try again --- not displayed");
+
+            extentTest.Log(Status.Info, $"Expected error message is: " + expectedErrorMessage + "and the actual error message is: " + actualErrorMessage);
+
         }
 
         [Then(@"no journey results should be displayed")]
         public void ThenNoJourneyResultsShouldBeDisplayed()
         {
-            throw new PendingStepException();
+            IWebElement viewDetailsElement = searchResultsPage.ValidateViewDetailsElementNotPresent();
+
+            Assert.True(viewDetailsElement == null, "View details element should not be displayed for invalid journey plan");
+
+            extentTest.Log(Status.Info, "View details element is not displayed for invalid journey plan");
+
         }
 
 
         [Then(@"I should see an error message indicating the ""([^""]*)"" location is invalid")]
-        public void ThenIShouldSeeAnErrorMessageIndicatingTheLocationIsInvalid(string from)
+        public void ThenIShouldSeeAnErrorMessageIndicatingTheLocationIsInvalid(string fromLocation)
         {
-            throw new PendingStepException();
+            string expectedErrorMessage = "Invalid Place";
+
+            string actualErrorMessage = searchResultsPage.GetOnScreenJourneyPlannerMessageForInvalidPlace();
+
+            Assert.True(actualErrorMessage.Contains(expectedErrorMessage), "Search results with valid error message : We found more than one location matching -Invalid Place --- not displayed");
+
+            extentTest.Log(Status.Info, $"Expected error message is: " + expectedErrorMessage + "and the actual error message is: " + actualErrorMessage);
         }
 
         [When(@"I leave the ""([^""]*)"" field empty")]
@@ -107,6 +162,12 @@ namespace TFL.Automation.UI.StepDefinitions
         public void ThenIShouldSeeAnErrorMessageIndicatingTheLocationNamesAreTooLong()
         {
             throw new PendingStepException();
+        }
+
+        public void Dispose()
+        {
+            // Close browser
+            webDriver.CloseBrowser();
         }
     }
 }

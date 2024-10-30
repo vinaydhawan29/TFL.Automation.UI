@@ -39,5 +39,9 @@
         public readonly static string UpliftIcon = "//a[@data-title='Up lift']/span[contains(text(),'Up lift')]";
 
         public readonly static string LevelWalkwayIcon = "//a[@data-title='Level walkway']/span[contains(text(),'Level walkway')]";
+
+        public readonly static string OnScreenJourneyPlannerMessage = "//ul[@class='field-validation-errors']/li";
+
+        public readonly static string OnScreenJourneyPlannerMessageForInvalidPlace = "//div[@class='disambiguation-form clearfix']/div[1]/div[2]/div/span/strong";
     }
 }

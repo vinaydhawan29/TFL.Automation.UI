@@ -19,15 +19,11 @@ namespace TFL.Automation.UI.Helpers
 
             if (cache.ContainsKey(key)) return (T)cache[key];
 
-            string configValue = Environment.GetEnvironmentVariable(key, EnvironmentVariableTarget.Process) ?? Environment.GetEnvironmentVariable(key, EnvironmentVariableTarget.User) ?? Environment.GetEnvironmentVariable(key, EnvironmentVariableTarget.Machine);
+            string configValue = Environment.GetEnvironmentVariable(key, EnvironmentVariableTarget.Process);
 
             if (configValue.IsNullOrWhiteSpace()) return @default;
 
             _ = configValue.TryParse(out T result, @default);
-
-            while (!cache.ContainsKey(key) && !cache.TryAdd(key, result ?? @default))
-                if (!Thread.Yield())
-                    Thread.Sleep(0);
 
             return result ?? @default;
         }

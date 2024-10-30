@@ -70,6 +70,15 @@ namespace TFL.Automation.UI.Helpers
             return element;
         }
 
+        public static IWebElement FindElementAndReturnNullIfNotPresent(this IWebDriver WebDriver, string key, string elementDescription, int timeout = 30)
+        {
+            var element = TryFindElement(WebDriver, key, timeout);
+
+            if (element == null)
+                return element;
+            return element;
+        }
+
         public static IWebElement TryFindElement(this IWebDriver WebDriver, string key, int timeout = 30)
         {
             var element = WaitForElementToBeVisible(WebDriver, key, timeout);

@@ -112,5 +112,12 @@ namespace TFL.Automation.UI.PageObjects
                 return false;
             }
         }
+
+        public string GetOnScreenJourneyPlannerMessage() => _webDriver.FindElement(SearchResults.OnScreenJourneyPlannerMessage, "On Screen Journey Planner Message is displayed").Text;
+
+        public IWebElement ValidateViewDetailsElementNotPresent() => _webDriver.FindElementAndReturnNullIfNotPresent(SearchResults.ViewDetailsButton, "View Details Button");
+
+        public string GetOnScreenJourneyPlannerMessageForInvalidPlace() => _webDriver.FindElement(SearchResults.OnScreenJourneyPlannerMessageForInvalidPlace, "On Screen Journey Planner Message is displayed for Invalid Place").Text;
+
     }
 }

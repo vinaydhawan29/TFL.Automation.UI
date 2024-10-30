@@ -13,7 +13,6 @@ namespace TFL.Automation.UI.StepDefinitions
         private IWebDriver webDriver;
         private Homepage homepage;
         private SearchResultsPage searchResultsPage;
-        public string environment;
         private readonly ExtentTest extentTest;
 
         public EditJourneyPreferencesStepDefinitions(ScenarioContext scenario)
@@ -37,7 +36,7 @@ namespace TFL.Automation.UI.StepDefinitions
 
             homepage.ValidateTflHomepageisLoaded();
 
-            extentTest.Info("Journey Planner website is up and running");
+            extentTest.Log(Status.Info, "Journey Planner website is up and running");
 
             homepage.EnterPlanJourneyDetails(fromLocation, toLocation);
 
@@ -47,7 +46,7 @@ namespace TFL.Automation.UI.StepDefinitions
 
             Assert.True(actualPageTitle.Contains(expectedPageTitle), "Search results page did not load successfully");
 
-            extentTest.Info("Page title is: " + actualPageTitle);
+            extentTest.Log(Status.Pass, "Search results page loaded successfully");
 
             #endregion
 
@@ -108,7 +107,7 @@ namespace TFL.Automation.UI.StepDefinitions
 
             Assert.True(!string.IsNullOrEmpty(recalcualtedRouteTime), "Recalculated route time was not displayed");
 
-            extentTest.Info("Recalculated route time is displayed : " + recalcualtedRouteTime);
+            extentTest.Log(Status.Pass, "Recalculated route time is displayed : " + recalcualtedRouteTime);
         }
 
         [Then(@"the new route should prioritize minimal walking distance")]
@@ -122,9 +121,9 @@ namespace TFL.Automation.UI.StepDefinitions
 
             Assert.True(!string.IsNullOrEmpty(recalcualtedRouteEndTime), "Recalculated route end time was not displayed");
 
-            extentTest.Info("Recalculated route start time is displayed : " + recalculatedRouteStartTime);
+            extentTest.Log(Status.Info, "Recalculated route start time is displayed : " + recalculatedRouteStartTime);
 
-            extentTest.Info("Recalculated route end time is displayed : " + recalcualtedRouteEndTime);
+            extentTest.Log(Status.Info, "Recalculated route end time is displayed : " + recalcualtedRouteEndTime);
 
         }
 
@@ -133,25 +132,25 @@ namespace TFL.Automation.UI.StepDefinitions
         {
             searchResultsPage.ClickOnViewDetails();
 
-            extentTest.Info("Viewing updated journey details");
+            extentTest.Log(Status.Info, "Viewing updated journey details");
 
             bool isUpstairsIconPresent = searchResultsPage.ValidateUpstairsIconPresent();
 
             Assert.True(isUpstairsIconPresent, "Upstairs icon is not displayed");
 
-            extentTest.Info("Upstairs icon is displayed");
+            extentTest.Log(Status.Info, "Upstairs icon is displayed");
 
             bool isUpliftIconPresent = searchResultsPage.ValidateUpliftIconPresent();
 
             Assert.True(isUpliftIconPresent, "Uplift icon is not displayed");
 
-            extentTest.Info("Uplift icon is displayed");
+            extentTest.Log(Status.Info, "Uplift icon is displayed");
 
             bool isLevelWalkwayIconPresent = searchResultsPage.ValidateLevelWalkwayIconPresent();
 
             Assert.True(isLevelWalkwayIconPresent, "Level walkway icon is not displayed");
 
-            extentTest.Info("Level walkway icon is displayed");
+            extentTest.Log(Status.Info, "Level walkway icon is displayed");
 
         }
 
@@ -208,7 +207,6 @@ namespace TFL.Automation.UI.StepDefinitions
         {
             throw new PendingStepException();
         }
-
 
         public void Dispose()
         {

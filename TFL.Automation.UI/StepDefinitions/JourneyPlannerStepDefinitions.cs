@@ -48,6 +48,13 @@ namespace TFL.Automation.UI.StepDefinitions
             throw new PendingStepException();
         }
 
+        [Then(@"the estimated time should be within acceptable range for cycling")]
+        public void ThenTheEstimatedTimeShouldBeWithinAcceptableRangeForCycling()
+        {
+            throw new PendingStepException();
+        }
+
+
         [When(@"I request a route from ""([^""]*)"" to ""([^""]*)""")]
         public void WhenIRequestARouteFromTo(string p0, string p1)
         {
@@ -164,8 +171,6 @@ namespace TFL.Automation.UI.StepDefinitions
             //Extract the numeric value from the string
             int actualCyclingTime = int.TryParse(getCyclingTime, out actualCyclingTime) ? actualCyclingTime : 0;
 
-            Console.WriteLine($"Actual cycling time: {actualCyclingTime} minutes");
-            Console.WriteLine($"Expected cycling time range: {minTime} to {maxTime} minutes");
             extentTest.Info($"Actual cycling time: {actualCyclingTime} minutes");
             extentTest.Info($"Expected cycling time range: {minTime} to {maxTime} minutes");
 
