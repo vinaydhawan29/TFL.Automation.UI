@@ -1,32 +1,13 @@
 ﻿using Newtonsoft.Json.Linq;
-using System.Collections.Concurrent;
 
 namespace TFL.Automation.UI.Helpers
 {
     public static class ConfigRead
     {
-        private static readonly ConcurrentDictionary<string, object> cache = new();
 
         public static void Set(string key, string value) => Environment.SetEnvironmentVariable(key, value, EnvironmentVariableTarget.Process);
 
-        public static string Get(string key, string @default = default) => Get<string>(key, @default);
-
-        public static T Get<T>(string key, T @default = default)
-        {
-            if (key.IsNullOrWhiteSpace()) return @default;
-
-            key = key.ToLower();
-
-            if (cache.ContainsKey(key)) return (T)cache[key];
-
-            string configValue = Environment.GetEnvironmentVariable(key, EnvironmentVariableTarget.Process);
-
-            if (configValue.IsNullOrWhiteSpace()) return @default;
-
-            _ = configValue.TryParse(out T result, @default);
-
-            return result ?? @default;
-        }
+        public static string Get(string key, string @default = default) => Environment.GetEnvironmentVariable(key, EnvironmentVariableTarget.Process) ?? Environment.GetEnvironmentVariable(key, EnvironmentVariableTarget.User) ?? Environment.GetEnvironmentVariable(key, EnvironmentVariableTarget.Machine) ?? default;
 
         public static bool IsNullOrWhiteSpace(this string source) => string.IsNullOrWhiteSpace(source);
 
@@ -36,7 +17,7 @@ namespace TFL.Automation.UI.Helpers
             // Will require xunit_environment_config, or what ever the value of environmentVariableName being passed,
             // to be set on the environment of the machine.
 
-            string filePath = $"local.settings.{Get(environmentVariableName, "local")}.json";
+            string filePath = "local.settings.local.json";
 
             if (!optional && !string.IsNullOrWhiteSpace(root) && !Directory.Exists(root)) throw new DirectoryNotFoundException($"'{root}' not found");
 
