@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35201.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFL.Automation.UI", "TFL.Automation.UI\TFL.Automation.UI.csproj", "{9BA4CF1C-BBD1-4F1B-BD68-93CB689CB1DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9BA4CF1C-BBD1-4F1B-BD68-93CB689CB1DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BA4CF1C-BBD1-4F1B-BD68-93CB689CB1DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BA4CF1C-BBD1-4F1B-BD68-93CB689CB1DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BA4CF1C-BBD1-4F1B-BD68-93CB689CB1DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95D08EE6-359A-4633-8344-95FA12702634}
+	EndGlobalSection
+EndGlobal
