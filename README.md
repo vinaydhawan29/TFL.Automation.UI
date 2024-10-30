@@ -42,9 +42,14 @@ The project is organized as follows:
   - `WebDriverExtensions.cs`
   - `ConfigReader.cs`
 
+- `Factory/`: Contains browser factory for initiating the different browsers
+  - `BrowserFactory.cs`
+
 - `TestResults/`: Directory for test execution results. HTML reports provide detailed information about test execution.
 
-- `Hooks.cs/`: Contains extent reporting for test execution results
+- `Hooks.cs`: Contains extent reporting for test execution results
+
+- `local.settings.local.json`: Contains environment variables to manage executions across different environments
 
 - `README.md`: This file lists framework details
 
