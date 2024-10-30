@@ -2,7 +2,7 @@
 
 ## Overview
 This framework is designed to automate testing of a TFL website - journey planning.
-It uses SpecFlow for Behavior-Driven Development (BDD) and Selenium WebDriver for browser automation.
+It uses SpecFlow for Behavior-Driven Development (BDD) and Selenium WebDriver for browser automation with Xunit test framework selected
 
 ## Table of Contents
 1. [Prerequisites](#prerequisites)
@@ -14,10 +14,10 @@ It uses SpecFlow for Behavior-Driven Development (BDD) and Selenium WebDriver fo
 7. [Troubleshooting](#troubleshooting)
 
 ## Prerequisites
-- .NET Core SDK (version X.X or higher)
+- .NET Core SDK (version X.X or higher) with xunit, Specflow packages and selenium supported nuget packages imported
 - Visual Studio 2019 or later (for Windows users)
 - Visual Studio Code (for cross-platform development)
-- Chrome browser
+- Chrome browser ver 130
 
 ## Setup
 1. Clone the repository: https://github.com/vinaydhawan29/TFL.Automation.UI
