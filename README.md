@@ -8,11 +8,10 @@ It uses SpecFlow for Behavior-Driven Development (BDD) and Selenium WebDriver fo
 1. [Prerequisites](#prerequisites)
 2. [Setup](#setup)
 3. [Project Structure](#project-structure)
-4. [Writing Tests](#writing-tests)
+4. [Decisions](#Key-Decisions)
 5. [Running Tests](#running-tests)
 6. [Reporting](#reporting)
-7. [Best Practices](#best-practices)
-8. [Troubleshooting](#troubleshooting)
+7. [Troubleshooting](#troubleshooting)
 
 ## Prerequisites
 - .NET Core SDK (version X.X or higher)
@@ -107,3 +106,14 @@ Rationale: Facilitates automated testing as part of the development and deployme
 ### Modular and Reusable Step Definitions:
 Create modular, reusable step definitions.
 Rationale: Promotes code reuse and makes it easier to create new scenarios using existing steps.
+
+
+## Running Tests
+To Be Continued
+
+## Reporting 
+To Be Continued
+
+
+## Troubleshooting 
+To Be Continued
