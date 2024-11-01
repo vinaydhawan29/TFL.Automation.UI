@@ -28,7 +28,6 @@ namespace TFL.Automation.UI.PageObjects
             string expectedSearchResultsForWalkingAndCycling = "Walking and cycling";
 
             Assert.True(searchResultsForWalkingAndCycling.Contains(expectedSearchResultsForWalkingAndCycling), "Search results for Walking and cycling are not displayed");
-
         }
 
         public string GetWalkingResults => _webDriver.FindElement(SearchResults.SearchResultsForWalking, "Walking Text with details are displayed on the page").Text;
