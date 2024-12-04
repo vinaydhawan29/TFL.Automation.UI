@@ -67,8 +67,6 @@ namespace TFL.Automation.UI.PageObjects
         {
             _webDriver.FindElementAndEnterText(Home.FromTextBox, fromLocation, "Enter From travel location textbox");
 
-            //SelectFromLocationFromAutocomplete
-
             SelectFromLocationFromAutoComplete(fromLocation);
 
             _webDriver.FindElementAndEnterText(Home.ToTextBox, toLocation, "Enter To travel location textbox");
